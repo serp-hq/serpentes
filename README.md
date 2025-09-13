@@ -1,45 +1,54 @@
 # 🐍 Serpentes VM
 
-**Serpentes** is a unified virtual machine for executing both **Python** and **Garter** code.  
-It defines a shared bytecode, execution semantics, and host API bindings — ensuring compatibility across servers, desktops, and browsers.
+**Serpentes** is an experimental virtual machine for Python, inspired by how GraalVM broadened the JVM.  
+
+It is **not a CPython replacement** — CPython remains Python’s reference interpreter.  
+Instead, Serpentes explores a unified, async-first bytecode and sandboxed execution model that runs in two modes:
+
+- **Server:** as an optional runtime for ASGI servers (e.g. Uvicorn, Hypercorn), providing an async-native execution engine for Python web apps.
+- **Client:** as a standalone WASM runtime in the browser, powering [Garter](https://github.com/serp-hq/garter), a sandboxed Python dialect.
 
 ---
 
 ## ✨ Features
-- **Unified Bytecode** – Derived from Python 3.13, extended with:
+- **Unified Bytecode** – derived from Python 3.13, extended with:
   - Async-first instructions
+  - Sandboxed opcodes
   - Monadic types
-  - Sandbox opcodes
-- **Profiles** –  
-  - **Full Profile**: for Python on server/desktop  
+- **Profiles** –
+  - **Full Profile**: for Python apps on the server
   - **Sandbox Profile**: for Garter in the browser
-- **Built-in sRPC** – Serpentes RPC for browser ↔ server calls.
-- **WebAssembly-first** – Runs in WASM or native runtimes.
+- **sRPC (Serpentes RPC)** – built-in mechanism for safe client ↔ server calls.
+- **Rust Core** – the VM is implemented in Rust for safety and performance.
+- **Dual Targets**:
+  - Native binary for server integration with Uvicorn/ASGI
+  - WASM build for browser sandbox execution
 
 ---
 
 ## 📖 Motivation
-Python’s current VM (CPython) is powerful but not portable.  
-With the rise of **Garter** (Python in the browser), we need a common runtime to:  
-- Eliminate mismatches between server and client execution.  
-- Provide standard RPC and sandboxing.  
-- Enable long-term cross-environment optimizations.  
+Python dominates on the server, but struggles to reach the browser.  
+Serpentes aims to unify these environments by:
+- Providing a common bytecode for both Python and Garter
+- Enabling secure sandbox execution in the browser
+- Offering async-first semantics that map cleanly to modern event loops
+- Allowing drop-in use with ASGI servers
 
 ---
 
 ## 📚 Resources
-- [Draft PEP: Serpentes](https://github.com/serp-hq/serp-serpentes/blob/main/PEP_YYYY_Serpentes.pdf)  
-- [Org Home (Serp-HQ)](https://github.com/serp-hq)  
+- [Org Home (Serp-HQ)](https://github.com/serp-hq)
 
 ---
 
 ## 🤝 Contributing
-We’re in early design stages. Contributions are welcome in:  
-- Spec drafting  
-- VM prototyping  
-- WASM runtime experimentation  
+We’re in early design stages. Contributions are welcome in:
+- VM prototyping in Rust
+- ASGI server integration
+- WASM runtime experimentation
+- Spec drafting and discussion
 
-👉 Join the conversation in [Discussions](https://github.com/serp-hq/serp-serpentes/discussions).  
+👉 Join the conversation in [Discussions](https://github.com/serp-hq/serpentes/discussions).
 
 ---
 
