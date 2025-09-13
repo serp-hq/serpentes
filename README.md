@@ -13,7 +13,7 @@ It defines a shared bytecode, execution semantics, and host API bindings — ens
 - **Profiles** –  
   - **Full Profile**: for Python on server/desktop  
   - **Sandbox Profile**: for Garter in the browser
-- **Built-in sRPC** – Secure RPC for browser ↔ server calls.
+- **Built-in sRPC** – Serpentes RPC for browser ↔ server calls.
 - **WebAssembly-first** – Runs in WASM or native runtimes.
 
 ---
